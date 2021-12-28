@@ -20,10 +20,14 @@ public class Client {
     private Double renda;
     @Column(nullable = false)
     private String senha;
-    //Retornando a lista de endereço do mapeamento de tabelas
+    //Retornando a lista de endereço do mapeamento das  tabelas Cliente x Address
     //1 cliente pode ter varios enderços
     @OneToMany (mappedBy = "client")
     private List<Address> addressList = new ArrayList<Address>();
+    //Retornando a lista de emprestimos do mapeamento de tabelas Client x Loan
+    //1 cliente pode ter varios emprestimos
+    @OneToMany (mappedBy = "client")
+    private List<Loan> loanList = new ArrayList<Loan>();
 
     public Long getId() {
         return id;
