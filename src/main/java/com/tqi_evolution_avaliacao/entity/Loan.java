@@ -14,10 +14,10 @@ public class Loan {
     @ManyToOne
     @JoinColumn (name = "id_client")
     private Client client;
-    private Double valorPrimeiraParcela;
-    private String data;
+    private Double valor;
+    private LocalDate dataPrimeiraParcela;
     private int parcelas;
-    private LocalDate dataAtual;
+    private LocalDate dataAtual = LocalDate.now(); ;
 
     public Long getId() {
         return id;
@@ -35,20 +35,20 @@ public class Loan {
         this.client = client;
     }
 
-    public Double getValorPrimeiraParcela() {
-        return valorPrimeiraParcela;
+    public Double getValor() {
+        return valor;
     }
 
-    public void setValorPrimeiraParcela(Double valorPrimeiraParcela) {
-        this.valorPrimeiraParcela = valorPrimeiraParcela;
+    public void setValor(Double valor) {
+        this.valor = valor;
     }
 
-    public String getData() {
-        return data;
+    public LocalDate getDataPrimeiraParcela() {
+        return dataPrimeiraParcela;
     }
 
-    public void setData(String data) {
-        this.data = data;
+    public void setDataPrimeiraParcela(LocalDate dataPrimeiraParcela) {
+        this.dataPrimeiraParcela = dataPrimeiraParcela;
     }
 
     public int getParcelas() {
