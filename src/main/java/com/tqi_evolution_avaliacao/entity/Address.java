@@ -8,6 +8,7 @@ public class Address {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    //Criando o mapeamento das tabelas Client x Address
     @ManyToOne
     @JoinColumn (name = "id_client")
     private Client client;

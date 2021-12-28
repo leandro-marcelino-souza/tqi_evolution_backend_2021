@@ -1,6 +1,9 @@
 package com.tqi_evolution_avaliacao.entity;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
+
 @Entity
 @Table(name = "tb_clientes")
 public class Client {
@@ -17,6 +20,10 @@ public class Client {
     private Double renda;
     @Column(nullable = false)
     private String senha;
+    //Retornando a lista de endereço do mapeamento de tabelas
+    //1 cliente pode ter varios enderços
+    @OneToMany (mappedBy = "client")
+    private List<Address> addressList = new ArrayList<Address>();
 
     public Long getId() {
         return id;
