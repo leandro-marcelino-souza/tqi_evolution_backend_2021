@@ -21,6 +21,8 @@ public class ClientController {
     @Autowired
     ClientService clientService;
 
+
+
     @GetMapping("search/byEmail")
     public ClientDto getByEmail(@Param("email") String email) {
         return clientService.findByEmail(email);
@@ -35,9 +37,19 @@ public class ClientController {
             return new ResponseEntity<>(clientDto, HttpStatus.CREATED);
         }
     }
+    @DeleteMapping(value = "/{email}")
+    public  ResponseEntity<String> delete (@PathVariable String email){
+        ClientDto clientDto = new ClientDto();
+        clientDto.setEmail(email);
+        try{
+            clientService.delete(clientDto);
+            return  new ResponseEntity<>(email,HttpStatus.OK);
+        } catch (Exception e) {
+            return new ResponseEntity<>("",HttpStatus.NOT_FOUND);
+
+        }
+
+    }
 
 
-   /* public List<Client> getClients(){
-        return clientRepository.findAll();
-    }*/
 }

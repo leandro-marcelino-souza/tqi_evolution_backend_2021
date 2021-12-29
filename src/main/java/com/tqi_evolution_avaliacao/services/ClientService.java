@@ -10,6 +10,8 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
+
 @Service
 public class ClientService {
     @Autowired
@@ -38,7 +40,11 @@ public class ClientService {
         //invocar o repositorio
         //Mapeando o Client para o clientDto
         return modelMapper.map(clientRepository.save(client),ClientDto.class);
+    }
 
+    @Transactional(propagation = Propagation.REQUIRED, readOnly = false)
+    public void  delete (ClientDto clientDto){
+        clientRepository.deleteByEmail(clientDto.getEmail());
 
     }
 
