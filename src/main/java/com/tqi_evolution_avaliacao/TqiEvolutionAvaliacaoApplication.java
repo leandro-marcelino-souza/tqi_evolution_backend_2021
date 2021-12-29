@@ -4,6 +4,7 @@ import com.tqi_evolution_avaliacao.entity.Address;
 import com.tqi_evolution_avaliacao.entity.Client;
 import com.tqi_evolution_avaliacao.repositories.AddressRepository;
 import com.tqi_evolution_avaliacao.repositories.ClientRepository;
+import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
@@ -27,6 +28,11 @@ public class TqiEvolutionAvaliacaoApplication {
 			clients.forEach(client -> System.out.println(client.getEmail()));
 		};
 	}
+	@Bean
+	public ModelMapper modelMapper() {
+		return new ModelMapper();
+
+	};
 
 }
 
