@@ -9,5 +9,6 @@ import org.springframework.data.rest.core.annotation.RepositoryRestResource;
 @RepositoryRestResource(exported = false)
 public interface ClientRepository extends JpaRepository<Client, Long> {
     //Criando busca por e-mail
-    Client findByEmail(@Param("email") String email);
+    Client findByEmail(String email);
+    //Criando o metodo para deletar
 }

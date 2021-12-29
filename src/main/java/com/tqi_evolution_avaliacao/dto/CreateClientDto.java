@@ -3,17 +3,17 @@ package com.tqi_evolution_avaliacao.dto;
 import com.tqi_evolution_avaliacao.entity.Address;
 import com.tqi_evolution_avaliacao.entity.Loan;
 
-import javax.persistence.Column;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ClientDto {
+public class CreateClientDto {
 
     private String nome;
     private String email;
     private String cpf;
     private String rg;
     private Double renda;
+    private String senha;
     private List<Address> addressList = new ArrayList<Address>();
     private List<Loan> loanList = new ArrayList<Loan>();
 
@@ -55,6 +55,14 @@ public class ClientDto {
 
     public void setRenda(Double renda) {
         this.renda = renda;
+    }
+
+    public String getSenha() {
+        return senha;
+    }
+
+    public void setSenha(String senha) {
+        this.senha = senha;
     }
 
     public List<Address> getAddressList() {

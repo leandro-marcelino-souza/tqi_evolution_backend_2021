@@ -1,20 +1,43 @@
 package com.tqi_evolution_avaliacao.controller;
 
+import com.tqi_evolution_avaliacao.dto.ClientDto;
+import com.tqi_evolution_avaliacao.dto.CreateClientDto;
 import com.tqi_evolution_avaliacao.entity.Client;
 import com.tqi_evolution_avaliacao.repositories.ClientRepository;
+import com.tqi_evolution_avaliacao.services.ClientService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.data.repository.query.Param;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @RestController
+@RequestMapping("/clients")
 public class ClientController {
     @Autowired
     ClientRepository clientRepository;
+    @Autowired
+    ClientService clientService;
 
-    @RequestMapping("/clients")
-    public List<Client> getClients(){
-        return clientRepository.findAll();
+    @GetMapping("search/byEmail")
+    public ClientDto getByEmail(@Param("email") String email) {
+        return clientService.findByEmail(email);
     }
+    @PostMapping
+    public ResponseEntity<ClientDto> save(@RequestBody  CreateClientDto createClientDto) {
+
+        ClientDto clientDto =  clientService.save(createClientDto);
+        if(clientDto==null){
+            return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
+        } else {
+            return new ResponseEntity<>(clientDto, HttpStatus.CREATED);
+        }
+    }
+
+
+   /* public List<Client> getClients(){
+        return clientRepository.findAll();
+    }*/
 }
