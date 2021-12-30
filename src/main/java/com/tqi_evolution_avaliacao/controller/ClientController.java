@@ -27,6 +27,7 @@ public class ClientController {
     public ClientDto getByEmail(@Param("email") String email) {
         return clientService.findByEmail(email);
     }
+
     @PostMapping
     public ResponseEntity<ClientDto> save(@RequestBody  CreateClientDto createClientDto) {
 

@@ -19,7 +19,7 @@ public class ClientService {
     @Autowired
     private ModelMapper modelMapper;
 
-    //realizando busca por e-maiul
+    //realizando busca por e-mail
     public ClientDto findByEmail(String email) {
         Client client = clientRepository.findByEmail(email);
         //Mapeando o ClientDto
