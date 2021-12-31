@@ -17,6 +17,8 @@ public class ClientDto {
     private List<Address> addressList = new ArrayList<Address>();
     private List<Loan> loanList = new ArrayList<Loan>();
 
+
+
     public String getNome() {
         return nome;
     }

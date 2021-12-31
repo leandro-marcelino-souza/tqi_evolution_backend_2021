@@ -5,7 +5,7 @@ import com.tqi_evolution_avaliacao.entity.Client;
 
 public class CreateAddressDto {
 
-    private String email;
+    private String cpf;
     private String rua;
     private int numero;
     private String logadouro;
@@ -29,12 +29,12 @@ public class CreateAddressDto {
 
     }
 
-    public String getEmail() {
-        return email;
+    public String getCpf() {
+        return cpf;
     }
 
-    public void setEmail(String email) {
-        this.email = email;
+    public void setCpf(String cpf) {
+        this.cpf = cpf;
     }
 
     public String getRua() {

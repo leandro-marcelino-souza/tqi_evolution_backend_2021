@@ -1,10 +1,12 @@
 package com.tqi_evolution_avaliacao.controller;
 
 import com.tqi_evolution_avaliacao.dto.AddressDto;
+import com.tqi_evolution_avaliacao.dto.ClientDto;
 import com.tqi_evolution_avaliacao.dto.CreateAddressDto;
 import com.tqi_evolution_avaliacao.entity.Address;
 import com.tqi_evolution_avaliacao.repositories.ClientRepository;
 import com.tqi_evolution_avaliacao.services.AddressService;
+import com.tqi_evolution_avaliacao.services.ClientService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.repository.query.Param;
 import org.springframework.http.HttpStatus;
@@ -21,9 +23,11 @@ public class AddressController {
 
     @Autowired
     AddressService addressService;
+    @Autowired
+    ClientService clientService;
 
 
-    @GetMapping("/search/byCep")
+   @GetMapping("/search/byCep")
     public ResponseEntity<?> getByCep(@Param("cep") String cep){
         return new ResponseEntity<List<AddressDto>>(addressService.findByCep(cep), HttpStatus.OK);
     }

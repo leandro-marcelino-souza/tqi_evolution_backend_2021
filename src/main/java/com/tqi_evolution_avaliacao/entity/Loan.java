@@ -30,6 +30,7 @@ public class Loan {
     }
 
     public Client getClient() {
+
         return client;
     }
 

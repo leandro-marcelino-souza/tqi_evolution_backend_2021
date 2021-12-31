@@ -8,7 +8,7 @@ import java.io.Serializable;
 import java.time.LocalDate;
 
 public class LoanDto implements Serializable {
-
+    private Long id;
     private Client client;
     private Double valor;
     private LocalDate dataPrimeiraParcela;
@@ -20,12 +20,21 @@ public class LoanDto implements Serializable {
     }
 
     public LoanDto(Loan loan) {
+        setId(loan.getId());
         setClient(loan.getClient());
         setValor(loan.getValor());
         setDataPrimeiraParcela(loan.getDataPrimeiraParcela());
         setParcelas(loan.getParcelas());
         setDataAtual(loan.getDataAtual());
 
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public String getClient() {

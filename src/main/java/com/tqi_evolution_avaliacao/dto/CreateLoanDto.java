@@ -8,7 +8,7 @@ import java.time.LocalDate;
 
 public class CreateLoanDto {
     //private Client client;
-    private String email;
+    private String cpf;
     private Double valor;
     private LocalDate dataPrimeiraParcela;
     private int parcelas;
@@ -26,12 +26,12 @@ public class CreateLoanDto {
 
     }
 
-    public String getEmail() {
-        return email;
+    public String getCpf() {
+        return cpf;
     }
 
-    public void setEmail(String email) {
-        this.email = email;
+    public void setCpf(String cpf) {
+        this.cpf = cpf;
     }
 
     public Double getValor() {

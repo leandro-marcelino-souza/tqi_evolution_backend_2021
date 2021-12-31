@@ -40,7 +40,7 @@ public class AddressService {
         address.setCidade(createAddressDto.getCidade());
         address.setCep(createAddressDto.getCep());
         address.setEstado(createAddressDto.getEstado());
-        address.setClient(clientRepository.findByEmail(createAddressDto.getEmail()));
+        address.setClient(clientRepository.findByCpf(createAddressDto.getCpf()));
 
         address = addressRepository.save(address);
 
@@ -52,7 +52,7 @@ public class AddressService {
         retorno.setCidade(address.getCidade());
         retorno.setCep(address.getCep());
         retorno.setEstado(address.getEstado());
-        retorno.setEmail(createAddressDto.getEmail());
+        retorno.setCpf(createAddressDto.getCpf());
         return retorno;
 
 

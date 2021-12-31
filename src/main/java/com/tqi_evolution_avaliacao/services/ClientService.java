@@ -20,12 +20,14 @@ public class ClientService {
     private ModelMapper modelMapper;
 
     //realizando busca por e-mail
-    public ClientDto findByEmail(String email) {
-        Client client = clientRepository.findByEmail(email);
+    public ClientDto findByCpf(String cpf) {
+        Client client = clientRepository.findByCpf(cpf);
         //Mapeando o ClientDto
         ClientDto clientDto = modelMapper.map(client, ClientDto.class);
         return clientDto;
     }
+
+
 
     //Salvando um novo cliente
     @Transactional(propagation = Propagation.REQUIRED, readOnly = false)

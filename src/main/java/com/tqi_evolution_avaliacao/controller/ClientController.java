@@ -3,7 +3,6 @@ package com.tqi_evolution_avaliacao.controller;
 import com.tqi_evolution_avaliacao.dto.ClientDto;
 import com.tqi_evolution_avaliacao.dto.CreateClientDto;
 import com.tqi_evolution_avaliacao.entity.Client;
-import com.tqi_evolution_avaliacao.repositories.ClientRepository;
 import com.tqi_evolution_avaliacao.services.ClientService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.repository.query.Param;
@@ -22,10 +21,13 @@ public class ClientController {
     ClientService clientService;
 
 
-
-    @GetMapping("search/byEmail")
-    public ClientDto getByEmail(@Param("email") String email) {
-        return clientService.findByEmail(email);
+    /*@GetMapping
+    public List<ClientDto> findAll(){
+        return clientService.clientDtos();
+    }*/
+    @GetMapping("search/byCpf")
+    public ClientDto getByCpf(@Param("cpf") String cpf) {
+        return clientService.findByCpf(cpf);
     }
 
     @PostMapping

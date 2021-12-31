@@ -17,7 +17,6 @@ public class Address {
     private String logadouro;
     private String bairro;
     private String cidade;
-    @Column(unique = true)
     private String cep;
     private String estado;
 

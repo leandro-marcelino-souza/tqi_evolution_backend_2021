@@ -11,4 +11,6 @@ import java.util.List;
 @RepositoryRestResource(exported = false)
 public interface AddressRepository extends JpaRepository<Address, Long> {
     List <Address> findByCep(@Param("cep") String cep);
+
+
 }
