@@ -14,10 +14,10 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/clients")
+@RequestMapping("/api/clients")
 public class ClientController {
-    @Autowired
-    ClientRepository clientRepository;
+    //@Autowired
+    //ClientRepository clientRepository;
     @Autowired
     ClientService clientService;
 

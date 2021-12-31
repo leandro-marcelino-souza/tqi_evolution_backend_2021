@@ -7,6 +7,7 @@ import java.io.Serializable;
 
 public class AddressDto implements Serializable {
 
+    //private Client client;
     private Client client;
     private String rua;
     private int numero;
@@ -17,7 +18,7 @@ public class AddressDto implements Serializable {
     private String estado;
 
     public AddressDto() {
-        //vazio
+        //padrão
     }
 
     public AddressDto(Address address) {
@@ -35,13 +36,16 @@ public class AddressDto implements Serializable {
 
 
 
-    public Client getClient() {
-        return client;
+    public String getClient() {
+        //retornando o nome na busca do endereço
+        return client.getNome();
+
     }
 
     public void setClient(Client client) {
         this.client = client;
     }
+
 
     public String getRua() {
         return rua;

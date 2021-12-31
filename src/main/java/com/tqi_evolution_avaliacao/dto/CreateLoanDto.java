@@ -1,40 +1,37 @@
-package com.tqi_evolution_avaliacao.entity;
+package com.tqi_evolution_avaliacao.dto;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.tqi_evolution_avaliacao.entity.Client;
+import com.tqi_evolution_avaliacao.entity.Loan;
 
-import javax.persistence.*;
 import java.time.LocalDate;
-import java.util.Calendar;
 
-@Entity
-@Table(name = "tb_loan")
-public class Loan {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
-    //Criando o mapeamento das tabelas Client x Loan
-    @ManyToOne
-    @JoinColumn (name = "id_client")
-    private Client client;
+public class CreateLoanDto {
+    //private Client client;
+    private String email;
     private Double valor;
     private LocalDate dataPrimeiraParcela;
     private int parcelas;
-    private LocalDate dataAtual = LocalDate.now(); ;
+    private LocalDate dataAtual = LocalDate.now();
 
-    public Long getId() {
-        return id;
+    public CreateLoanDto(){
+        //padrão
     }
 
-    public void setId(Long id) {
-        this.id = id;
+    public CreateLoanDto(Loan loan) {
+        setValor(loan.getValor());
+        setDataPrimeiraParcela(loan.getDataPrimeiraParcela());
+        setParcelas(loan.getParcelas());
+        setDataAtual(loan.getDataAtual());
+
     }
 
-    public Client getClient() {
-        return client;
+    public String getEmail() {
+        return email;
     }
 
-    public void setClient(Client client) {
-        this.client = client;
+    public void setEmail(String email) {
+        this.email = email;
     }
 
     public Double getValor() {
