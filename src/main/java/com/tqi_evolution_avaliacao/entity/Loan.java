@@ -1,10 +1,7 @@
 package com.tqi_evolution_avaliacao.entity;
 
-import com.fasterxml.jackson.annotation.JsonFormat;
-
 import javax.persistence.*;
 import java.time.LocalDate;
-import java.util.Calendar;
 
 @Entity
 @Table(name = "tb_loan")
@@ -20,7 +17,12 @@ public class Loan {
     private LocalDate dataPrimeiraParcela;
     private int parcelas;
     private LocalDate dataAtual = LocalDate.now();
-    ;
+
+
+
+    public Loan() {
+    }
+
 
     public Long getId() {
         return id;

@@ -29,6 +29,8 @@ public class Client {
     @OneToMany (mappedBy = "client")
     private List<Loan> loanList = new ArrayList<Loan>();
 
+
+
     public Long getId() {
         return id;
     }

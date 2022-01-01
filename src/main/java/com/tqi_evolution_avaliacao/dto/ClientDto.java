@@ -8,7 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ClientDto {
-
+    private Long id;
     private String nome;
     private String email;
     private String cpf;
@@ -16,8 +16,21 @@ public class ClientDto {
     private Double renda;
     private List<Address> addressList = new ArrayList<Address>();
     private List<Loan> loanList = new ArrayList<Loan>();
+    private Address address;
+    private Loan loan;
+
+    public ClientDto(){
+        //padrão
+    }
 
 
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
 
     public String getNome() {
         return nome;
@@ -59,19 +72,5 @@ public class ClientDto {
         this.renda = renda;
     }
 
-    public List<Address> getAddressList() {
-        return addressList;
-    }
 
-    public void setAddressList(List<Address> addressList) {
-        this.addressList = addressList;
-    }
-
-    public List<Loan> getLoanList() {
-        return loanList;
-    }
-
-    public void setLoanList(List<Loan> loanList) {
-        this.loanList = loanList;
-    }
 }

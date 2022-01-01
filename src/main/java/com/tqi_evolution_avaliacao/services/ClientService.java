@@ -6,6 +6,8 @@ import com.tqi_evolution_avaliacao.entity.Client;
 import com.tqi_evolution_avaliacao.repositories.ClientRepository;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
@@ -19,14 +21,14 @@ public class ClientService {
     @Autowired
     private ModelMapper modelMapper;
 
-    //realizando busca por e-mail
+
+    //realizando busca por cpf
     public ClientDto findByCpf(String cpf) {
         Client client = clientRepository.findByCpf(cpf);
         //Mapeando o ClientDto
         ClientDto clientDto = modelMapper.map(client, ClientDto.class);
         return clientDto;
     }
-
 
 
     //Salvando um novo cliente
@@ -46,7 +48,7 @@ public class ClientService {
 
     @Transactional(propagation = Propagation.REQUIRED, readOnly = false)
     public void  delete (ClientDto clientDto){
-        clientRepository.deleteByEmail(clientDto.getEmail());
+        clientRepository.deleteByCpf(clientDto.getCpf());
 
     }
 

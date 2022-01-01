@@ -1,6 +1,5 @@
 package com.tqi_evolution_avaliacao.dto;
 
-import com.fasterxml.jackson.annotation.JsonFormat;
 import com.tqi_evolution_avaliacao.entity.Client;
 import com.tqi_evolution_avaliacao.entity.Loan;
 
@@ -15,7 +14,7 @@ public class LoanDto implements Serializable {
     private int parcelas;
     private LocalDate dataAtual = LocalDate.now();
 
-    public LoanDto(){
+    public LoanDto(Client x){
         //padrão
     }
 
@@ -37,8 +36,9 @@ public class LoanDto implements Serializable {
         this.id = id;
     }
 
-    public String getClient() {
-        return client.getNome();
+    public Client getClient() {
+
+        return client;
     }
 
     public void setClient(Client client) {

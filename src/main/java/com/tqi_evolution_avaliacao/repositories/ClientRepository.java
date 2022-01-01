@@ -13,7 +13,7 @@ public interface ClientRepository extends JpaRepository<Client, Long> {
     //Criando busca por e-mail
     //Client findByEmail(String email);
     //Criando o metodo para deletar
-    public void deleteByEmail(String email);
+    public void deleteByCpf(String cpf);
     //Criando busca por e-mail
     Client findByCpf(String cpf);
 
