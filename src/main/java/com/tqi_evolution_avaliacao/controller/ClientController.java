@@ -31,24 +31,25 @@ public class ClientController {
     }
 
     @PostMapping
-    public ResponseEntity<ClientDto> save(@RequestBody  CreateClientDto createClientDto) {
+    public ResponseEntity<ClientDto> save(@RequestBody CreateClientDto createClientDto) {
 
-        ClientDto clientDto =  clientService.save(createClientDto);
-        if(clientDto==null){
+        ClientDto clientDto = clientService.save(createClientDto);
+        if (clientDto == null) {
             return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
         } else {
             return new ResponseEntity<>(clientDto, HttpStatus.CREATED);
         }
     }
+
     @DeleteMapping(value = "/{email}")
-    public  ResponseEntity<String> delete (@PathVariable String email){
+    public ResponseEntity<String> delete(@PathVariable String email) {
         ClientDto clientDto = new ClientDto();
         clientDto.setEmail(email);
-        try{
+        try {
             clientService.delete(clientDto);
-            return  new ResponseEntity<>(email,HttpStatus.OK);
+            return new ResponseEntity<>(email, HttpStatus.OK);
         } catch (Exception e) {
-            return new ResponseEntity<>("",HttpStatus.NOT_FOUND);
+            return new ResponseEntity<>("", HttpStatus.NOT_FOUND);
 
         }
 

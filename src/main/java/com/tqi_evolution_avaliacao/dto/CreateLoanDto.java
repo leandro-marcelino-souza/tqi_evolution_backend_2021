@@ -1,10 +1,14 @@
 package com.tqi_evolution_avaliacao.dto;
 
-import com.fasterxml.jackson.annotation.JsonFormat;
-import com.tqi_evolution_avaliacao.entity.Client;
+
+import ch.qos.logback.core.net.SyslogOutputStream;
 import com.tqi_evolution_avaliacao.entity.Loan;
 
 import java.time.LocalDate;
+
+import java.time.format.DateTimeFormatter;
+import java.time.Duration;
+
 
 public class CreateLoanDto {
     //private Client client;
@@ -14,7 +18,7 @@ public class CreateLoanDto {
     private int parcelas;
     private LocalDate dataAtual = LocalDate.now();
 
-    public CreateLoanDto(){
+    public CreateLoanDto() {
         //padrão
     }
 
@@ -47,7 +51,17 @@ public class CreateLoanDto {
     }
 
     public void setDataPrimeiraParcela(LocalDate dataPrimeiraParcela) {
-        this.dataPrimeiraParcela = dataPrimeiraParcela;
+
+        //subtrair duas datas em Java
+        Duration diff = Duration.between(dataAtual.atStartOfDay(), dataPrimeiraParcela.atStartOfDay());
+        long diffDays = diff.toDays();
+        if (diffDays <= 90) {
+            this.dataPrimeiraParcela = dataPrimeiraParcela;
+        } else {
+            return;
+        }
+
+
     }
 
     public int getParcelas() {
@@ -55,7 +69,14 @@ public class CreateLoanDto {
     }
 
     public void setParcelas(int parcelas) {
-        this.parcelas = parcelas;
+
+        if (parcelas > 1 && parcelas < 61) {
+            this.parcelas = parcelas;
+            System.out.println("emprestimo entre 1 e 60 parcelas");
+        } else {
+            System.out.println("Parcelas não pode ser zeradas ou maior que 60");
+            return;
+        }
     }
 
     public LocalDate getDataAtual() {

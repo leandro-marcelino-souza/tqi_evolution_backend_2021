@@ -34,11 +34,14 @@ public class LoanController {
 
     @PostMapping
     public ResponseEntity<CreateLoanDto> save(@RequestBody CreateLoanDto clDto) {
-        CreateLoanDto createLoanDto = loanService.save(clDto);
-
-        if (createLoanDto == null) {
+        CreateLoanDto createLoanDto = clDto;
+        //como a validação via classe está gravando no banco zerado em vez de parar a execução
+        //Tive que barra a iserção no banco por aqui(provisorio).
+        if (createLoanDto == null || createLoanDto.getParcelas() > 60 || createLoanDto.getParcelas() <=0) {
             return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
         } else {
+            createLoanDto = loanService.save(clDto);
+
             return new ResponseEntity<>(createLoanDto, HttpStatus.CREATED);
         }
     }

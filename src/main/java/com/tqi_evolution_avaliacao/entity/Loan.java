@@ -14,12 +14,13 @@ public class Loan {
     private Long id;
     //Criando o mapeamento das tabelas Client x Loan
     @ManyToOne
-    @JoinColumn (name = "id_client")
+    @JoinColumn(name = "id_client")
     private Client client;
     private Double valor;
     private LocalDate dataPrimeiraParcela;
     private int parcelas;
-    private LocalDate dataAtual = LocalDate.now(); ;
+    private LocalDate dataAtual = LocalDate.now();
+    ;
 
     public Long getId() {
         return id;

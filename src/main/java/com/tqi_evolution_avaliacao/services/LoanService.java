@@ -25,11 +25,11 @@ public class LoanService {
     @Autowired
     private ModelMapper modelMapper;
 
-  @Transactional(propagation = Propagation.REQUIRED, readOnly = false)
+    @Transactional(propagation = Propagation.REQUIRED, readOnly = false)
 
     public List<LoanDto> findById(Long id) {
-      Optional<Loan> loans = loanRepository.findById(id);
-      return loans.stream().map(x -> new LoanDto(x)).collect(Collectors.toList());
+        Optional<Loan> loans = loanRepository.findById(id);
+        return loans.stream().map(x -> new LoanDto(x)).collect(Collectors.toList());
     }
 
     @Transactional(propagation = Propagation.REQUIRED, readOnly = false)
@@ -51,8 +51,6 @@ public class LoanService {
         retorno.setCpf(createLoanDto.getCpf());
         return retorno;
 
-
     }
-
 
 }
