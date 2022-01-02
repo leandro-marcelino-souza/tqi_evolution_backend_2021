@@ -45,7 +45,7 @@ public class LoanService {
         loan.setDataPrimeiraParcela(createLoanDto.getDataPrimeiraParcela());
         loan.setParcelas(createLoanDto.getParcelas());
         loan.setDataAtual(createLoanDto.getDataAtual());
-        //loan.setClient(clientRepository.findByCpf(createLoanDto.getCpf()));
+        loan.setClient(clientRepository.findByCpf(createLoanDto.getCpf()));
 
         loan = loanRepository.save(loan);
 

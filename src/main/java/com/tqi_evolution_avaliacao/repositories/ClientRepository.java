@@ -1,11 +1,9 @@
 package com.tqi_evolution_avaliacao.repositories;
 
-import com.tqi_evolution_avaliacao.dto.ClientDto;
 import com.tqi_evolution_avaliacao.entity.Client;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.rest.core.annotation.RepositoryRestResource;
 
-import java.util.List;
 import java.util.Optional;
 
 //exported = false para não disponibilizar a api direto do repositorio

@@ -20,11 +20,11 @@ public class ClientService {
     private ModelMapper modelMapper;
 
     //realizando busca por e-mail
-    public CreateClientDto findByEmail(String email) {
+    public ClientDto findByEmail(String email) {
         Optional<Client> client = clientRepository.findByEmail(email);
         //Mapeando o ClientDto
-        CreateClientDto createClientDto = modelMapper.map(client, CreateClientDto.class);
-        return createClientDto;
+        ClientDto clientDto = modelMapper.map(client, ClientDto.class);
+        return clientDto;
     }
     //realizando busca por cpf
     public ClientDto findByCpf(String cpf) {

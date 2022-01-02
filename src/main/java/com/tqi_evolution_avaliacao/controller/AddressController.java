@@ -44,4 +44,18 @@ public class AddressController {
         }
     }
 
+
+    @DeleteMapping(value = "/{id}")
+    public ResponseEntity delete(@PathVariable Long id) {
+        Address address = new Address();
+        address.setId(id);
+        try {
+            addressService.delete(address);
+            return new ResponseEntity(id, HttpStatus.OK);
+        } catch (Exception e) {
+            return new ResponseEntity<>("", HttpStatus.NOT_FOUND);
+
+        }
+
+    }
 }

@@ -1,12 +1,11 @@
 package com.tqi_evolution_avaliacao.dto;
 
 
-import ch.qos.logback.core.net.SyslogOutputStream;
+import com.tqi_evolution_avaliacao.entity.Client;
 import com.tqi_evolution_avaliacao.entity.Loan;
 
 import java.time.LocalDate;
 
-import java.time.format.DateTimeFormatter;
 import java.time.Duration;
 
 
@@ -23,12 +22,14 @@ public class CreateLoanDto {
     }
 
     public CreateLoanDto(Loan loan) {
+
         setValor(loan.getValor());
         setDataPrimeiraParcela(loan.getDataPrimeiraParcela());
         setParcelas(loan.getParcelas());
         setDataAtual(loan.getDataAtual());
 
     }
+
 
     public String getCpf() {
         return cpf;

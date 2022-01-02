@@ -13,4 +13,5 @@ public interface AddressRepository extends JpaRepository<Address, Long> {
     List <Address> findByCep(@Param("cep") String cep);
 
 
+    Address getById(Address address);
 }

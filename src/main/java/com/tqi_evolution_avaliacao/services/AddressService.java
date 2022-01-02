@@ -1,6 +1,7 @@
 package com.tqi_evolution_avaliacao.services;
 
 import com.tqi_evolution_avaliacao.dto.AddressDto;
+import com.tqi_evolution_avaliacao.dto.ClientDto;
 import com.tqi_evolution_avaliacao.dto.CreateAddressDto;
 import com.tqi_evolution_avaliacao.entity.Address;
 import com.tqi_evolution_avaliacao.repositories.AddressRepository;
@@ -56,5 +57,9 @@ public class AddressService {
         return retorno;
 
 
+    }
+    @Transactional(propagation = Propagation.REQUIRED, readOnly = false)
+    public void delete(Address address) {
+        addressRepository.delete(address);
     }
 }
