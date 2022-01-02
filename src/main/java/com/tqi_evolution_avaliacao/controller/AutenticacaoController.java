@@ -1,6 +1,7 @@
 package com.tqi_evolution_avaliacao.controller;
 
 import com.tqi_evolution_avaliacao.config.TokenService;
+import com.tqi_evolution_avaliacao.dto.TokenDto;
 import com.tqi_evolution_avaliacao.entity.LoginForm;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -25,14 +26,13 @@ public class AutenticacaoController {
     private TokenService tokenService;
 
     @PostMapping
-    public ResponseEntity<?> autenticar(@RequestBody @Validated LoginForm form) {
+    public ResponseEntity<TokenDto> autenticar(@RequestBody @Validated LoginForm form) {
         UsernamePasswordAuthenticationToken dadosLogin = form.converter();
 
         try {
             Authentication authentication = authManager.authenticate(dadosLogin);
             String token = tokenService.gerarToken(authentication);
-            System.out.println(token);
-            return ResponseEntity.ok().build();
+            return ResponseEntity.ok(new TokenDto(token, "Bearer"));
         } catch (AuthenticationException e) {
             return ResponseEntity.badRequest().build();
         }
