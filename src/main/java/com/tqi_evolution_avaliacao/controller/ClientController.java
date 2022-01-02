@@ -27,7 +27,11 @@ public class ClientController {
         return client;
     }
 
+    @GetMapping("search/byEmail")
+    public CreateClientDto getByEmail(@Param("email") String email) {
 
+        return clientService.findByEmail(email);
+    }
     @GetMapping("search/byCpf")
     public ClientDto getByCpf(@Param("cpf") String cpf) {
 

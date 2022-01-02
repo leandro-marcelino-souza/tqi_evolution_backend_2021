@@ -6,6 +6,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.rest.core.annotation.RepositoryRestResource;
 
 import java.util.List;
+import java.util.Optional;
 
 //exported = false para não disponibilizar a api direto do repositorio
 @RepositoryRestResource(exported = false)
@@ -18,5 +19,5 @@ public interface ClientRepository extends JpaRepository<Client, Long> {
     Client findByCpf(String cpf);
 
 
-
+    Optional<Client> findByEmail(String email);
 }

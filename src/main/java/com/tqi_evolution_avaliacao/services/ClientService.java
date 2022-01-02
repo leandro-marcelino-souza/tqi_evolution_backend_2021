@@ -6,13 +6,11 @@ import com.tqi_evolution_avaliacao.entity.Client;
 import com.tqi_evolution_avaliacao.repositories.ClientRepository;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.List;
+import java.util.Optional;
 
 @Service
 public class ClientService {
@@ -21,7 +19,13 @@ public class ClientService {
     @Autowired
     private ModelMapper modelMapper;
 
-
+    //realizando busca por e-mail
+    public CreateClientDto findByEmail(String email) {
+        Optional<Client> client = clientRepository.findByEmail(email);
+        //Mapeando o ClientDto
+        CreateClientDto createClientDto = modelMapper.map(client, CreateClientDto.class);
+        return createClientDto;
+    }
     //realizando busca por cpf
     public ClientDto findByCpf(String cpf) {
         Client client = clientRepository.findByCpf(cpf);
