@@ -28,7 +28,7 @@ public class LoanController {
     public ResponseEntity<CreateLoanDto> save(@RequestBody CreateLoanDto clDto) {
         CreateLoanDto createLoanDto = clDto;
         //como a validação via classe está gravando no banco zerado em vez de parar a execução
-        //Tive que barra a inserção no banco por aqui(provisorio).
+        //Tive que barra a inserção no banco por aqui.
         if (createLoanDto == null || createLoanDto.getParcelas() > 60 || createLoanDto.getParcelas() <=0) {
             return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
         } else {
