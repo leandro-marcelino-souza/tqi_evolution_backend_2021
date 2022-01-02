@@ -1,6 +1,7 @@
 package com.tqi_evolution_avaliacao.config.security;
 
 import com.tqi_evolution_avaliacao.entity.Client;
+import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
 import org.springframework.security.core.Authentication;
@@ -32,5 +33,12 @@ public class TokenService {
         } catch (Exception e) {
             return false;
         }
+    }
+
+    //Recuperando o Id do Cliente que está setado no token
+    public Long getIdClient(String token) {
+        Claims claims = Jwts.parser().setSigningKey(this.SIGNINGKEY).parseClaimsJws(token).getBody();
+        return Long.parseLong(claims.getSubject());
+
     }
 }
