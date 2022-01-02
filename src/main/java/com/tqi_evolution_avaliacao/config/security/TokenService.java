@@ -1,4 +1,4 @@
-package com.tqi_evolution_avaliacao.config;
+package com.tqi_evolution_avaliacao.config.security;
 
 import com.tqi_evolution_avaliacao.entity.Client;
 import io.jsonwebtoken.Jwts;
@@ -22,5 +22,15 @@ public class TokenService {
                 .signWith(SignatureAlgorithm.HS512, SIGNINGKEY)
                 .compact();
 
+    }
+
+        //Validando se o token existe e se é valido
+    public boolean isTokenValido(String token) {
+        try {
+            Jwts.parser().setSigningKey(this.SIGNINGKEY).parseClaimsJws(token);
+            return true;
+        } catch (Exception e) {
+            return false;
+        }
     }
 }

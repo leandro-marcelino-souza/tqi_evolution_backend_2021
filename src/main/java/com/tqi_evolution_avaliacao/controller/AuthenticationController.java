@@ -1,6 +1,6 @@
 package com.tqi_evolution_avaliacao.controller;
 
-import com.tqi_evolution_avaliacao.config.TokenService;
+import com.tqi_evolution_avaliacao.config.security.TokenService;
 import com.tqi_evolution_avaliacao.dto.TokenDto;
 import com.tqi_evolution_avaliacao.entity.LoginForm;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,7 +18,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping("/auth")
-public class AutenticacaoController {
+public class AuthenticationController {
 
     @Autowired
     private AuthenticationManager authManager;

@@ -1,4 +1,4 @@
-package com.tqi_evolution_avaliacao.config;
+package com.tqi_evolution_avaliacao.config.security;
 
 import com.tqi_evolution_avaliacao.entity.Client;
 import com.tqi_evolution_avaliacao.repositories.ClientRepository;
@@ -11,7 +11,7 @@ import org.springframework.stereotype.Service;
 import java.util.Optional;
 
 @Service
-public class AutenticacaoService implements UserDetailsService {
+public class AuthenticationService implements UserDetailsService {
 
     @Autowired
     private ClientRepository clientRepository;

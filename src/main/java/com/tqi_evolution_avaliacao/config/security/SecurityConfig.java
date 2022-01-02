@@ -1,4 +1,4 @@
-package com.tqi_evolution_avaliacao.config;
+package com.tqi_evolution_avaliacao.config.security;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
@@ -12,13 +12,17 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
 @EnableWebSecurity
 @Configuration
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Autowired
-    private AutenticacaoService autenticacaoService;
+    private AuthenticationService authenticationService;
+
+    @Autowired
+    private TokenService tokenService;
 
     @Override
     @Bean
@@ -29,7 +33,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     //Configuraçoes de Autenticação
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-        auth.userDetailsService(autenticacaoService).passwordEncoder(new BCryptPasswordEncoder());
+        auth.userDetailsService(authenticationService).passwordEncoder(new BCryptPasswordEncoder());
 
     }
 
@@ -41,7 +45,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers(HttpMethod.POST, "/auth").permitAll()
                 .anyRequest().authenticated()
                 .and().csrf().disable()
-                .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);
+                .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
+                .and().addFilterBefore(new AuthenticationTokenFilter(tokenService), UsernamePasswordAuthenticationFilter.class);
     }
 
 
