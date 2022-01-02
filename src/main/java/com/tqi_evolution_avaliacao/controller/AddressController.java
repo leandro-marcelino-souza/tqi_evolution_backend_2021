@@ -32,6 +32,11 @@ public class AddressController {
         return new ResponseEntity<List<AddressDto>>(addressService.findByCep(cep), HttpStatus.OK);
     }
 
+    @GetMapping("/search/byCpf")
+    public ResponseEntity<?> getByCpf(@Param("cpf") String cpf){
+        return new ResponseEntity<List<AddressDto>>(addressService.findByClientCpf(cpf), HttpStatus.OK);
+    }
+
     @PostMapping
     public ResponseEntity<CreateAddressDto > save (@RequestBody CreateAddressDto  caDto ) {
         CreateAddressDto  createAddressDto  =   addressService.save(caDto);

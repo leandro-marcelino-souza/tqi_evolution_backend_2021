@@ -1,8 +1,9 @@
 package com.tqi_evolution_avaliacao.services;
 
-import com.tqi_evolution_avaliacao.dto.ClientDto;
+import com.tqi_evolution_avaliacao.dto.AddressDto;
 import com.tqi_evolution_avaliacao.dto.CreateLoanDto;
 import com.tqi_evolution_avaliacao.dto.LoanDto;
+import com.tqi_evolution_avaliacao.entity.Address;
 import com.tqi_evolution_avaliacao.entity.Client;
 import com.tqi_evolution_avaliacao.entity.Loan;
 import com.tqi_evolution_avaliacao.repositories.ClientRepository;
@@ -27,16 +28,20 @@ public class LoanService {
     @Autowired
     private ModelMapper modelMapper;
 
+    //Pesquisa por ID
     @Transactional(propagation = Propagation.REQUIRED, readOnly = false)
     public List<LoanDto> findById(Long id) {
         Optional<Loan> loans = loanRepository.findById(id);
         return loans.stream().map(x -> new LoanDto(x)).collect(Collectors.toList());
     }
-  /*  @Transactional(propagation = Propagation.REQUIRED, readOnly = false)
-    public List<LoanDto> findByCpf(String cpf) {
-        Optional<Client> client = Optional.ofNullable(clientRepository.findByCpf(cpf));
-        return client.stream().map(x -> new Loan(x)).collect(Collectors.toList());
-    }*/
+    //pesquisa por CPF
+    @Transactional(propagation = Propagation.REQUIRED, readOnly = false)
+    public List<LoanDto> findByClientCpf(String cpf) {
+        List<Loan> loan =  loanRepository.findByClientCpf(cpf);
+
+        return loan.stream().map(x -> new LoanDto(x)).collect(Collectors.toList());
+    }
+
 
     @Transactional(propagation = Propagation.REQUIRED, readOnly = false)
     public CreateLoanDto save(CreateLoanDto createLoanDto) {

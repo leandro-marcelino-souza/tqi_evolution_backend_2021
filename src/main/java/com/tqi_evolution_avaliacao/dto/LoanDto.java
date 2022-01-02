@@ -7,24 +7,27 @@ import java.io.Serializable;
 import java.time.LocalDate;
 
 public class LoanDto implements Serializable {
+
+    private String nome; // client;
+    private String email; // client;
     private Long id;
-    private Client client;
     private Double valor;
     private LocalDate dataPrimeiraParcela;
     private int parcelas;
-    private LocalDate dataAtual = LocalDate.now();
+    //private LocalDate dataAtual = LocalDate.now();
 
-    public LoanDto(Client x){
+    public LoanDto() {
         //padrão
     }
 
+
     public LoanDto(Loan loan) {
-        setId(loan.getId());
-        setClient(loan.getClient());
-        setValor(loan.getValor());
-        setDataPrimeiraParcela(loan.getDataPrimeiraParcela());
-        setParcelas(loan.getParcelas());
-        setDataAtual(loan.getDataAtual());
+        this.nome = loan.getClient().getNome();
+        this.email = loan.getClient().getEmail();
+        this.id = loan.getId();
+        this.valor = loan.getValor();
+        this.dataPrimeiraParcela = loan.getDataPrimeiraParcela();
+        this.parcelas = loan.getParcelas();
 
     }
 
@@ -32,48 +35,23 @@ public class LoanDto implements Serializable {
         return id;
     }
 
-    public void setId(Long id) {
-        this.id = id;
+    public String getNome() {
+        return nome;
     }
 
-    public Client getClient() {
-
-        return client;
-    }
-
-    public void setClient(Client client) {
-        this.client = client;
+    public String getEmail() {
+        return email;
     }
 
     public Double getValor() {
         return valor;
     }
 
-    public void setValor(Double valor) {
-        this.valor = valor;
-    }
-
     public LocalDate getDataPrimeiraParcela() {
         return dataPrimeiraParcela;
     }
 
-    public void setDataPrimeiraParcela(LocalDate dataPrimeiraParcela) {
-        this.dataPrimeiraParcela = dataPrimeiraParcela;
-    }
-
     public int getParcelas() {
         return parcelas;
-    }
-
-    public void setParcelas(int parcelas) {
-        this.parcelas = parcelas;
-    }
-
-    public LocalDate getDataAtual() {
-        return dataAtual;
-    }
-
-    public void setDataAtual(LocalDate dataAtual) {
-        this.dataAtual = dataAtual;
     }
 }

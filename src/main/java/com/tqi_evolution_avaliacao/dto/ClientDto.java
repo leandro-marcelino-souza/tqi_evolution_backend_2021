@@ -1,9 +1,9 @@
 package com.tqi_evolution_avaliacao.dto;
 
 import com.tqi_evolution_avaliacao.entity.Address;
+import com.tqi_evolution_avaliacao.entity.Client;
 import com.tqi_evolution_avaliacao.entity.Loan;
 
-import javax.persistence.Column;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -16,8 +16,8 @@ public class ClientDto {
     private Double renda;
     private List<Address> addressList = new ArrayList<Address>();
     private List<Loan> loanList = new ArrayList<Loan>();
-    private Address address;
-    private Loan loan;
+    //private Address address;
+   // private Loan loan;
 
     public ClientDto(){
         //padrão

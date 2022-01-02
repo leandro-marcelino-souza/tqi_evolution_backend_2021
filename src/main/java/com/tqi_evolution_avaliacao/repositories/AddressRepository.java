@@ -11,6 +11,7 @@ import java.util.List;
 @RepositoryRestResource(exported = false)
 public interface AddressRepository extends JpaRepository<Address, Long> {
     List <Address> findByCep(@Param("cep") String cep);
+    List <Address> findByClientCpf(@Param("cpf") String cpf);
 
 
     Address getById(Address address);

@@ -20,10 +20,9 @@ public class Loan {
 
 
 
-    public Loan() {
+    public Loan(){
+
     }
-
-
     public Long getId() {
         return id;
     }

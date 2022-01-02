@@ -5,6 +5,7 @@ import com.tqi_evolution_avaliacao.dto.CreateClientDto;
 import com.tqi_evolution_avaliacao.entity.Client;
 import com.tqi_evolution_avaliacao.repositories.ClientRepository;
 import com.tqi_evolution_avaliacao.services.ClientService;
+import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -21,17 +22,16 @@ public class ClientController {
     @Autowired
     ClientService clientService;
 
-@GetMapping
-    public Page<Client> getClients(Pageable page) {
-        Page<Client> client = clientRepository.findAll(page);
-        return client;
-    }
+
+
 
     @GetMapping("search/byEmail")
     public ClientDto getByEmail(@Param("email") String email) {
 
         return clientService.findByEmail(email);
     }
+
+    //busca por cpf
     @GetMapping("search/byCpf")
     public ClientDto getByCpf(@Param("cpf") String cpf) {
 
@@ -50,7 +50,7 @@ public class ClientController {
     }
 
     @DeleteMapping(value = "/{cpf}")
-    public ResponseEntity<String> delete(@PathVariable String cpf) {
+    public ResponseEntity<String> delete(@PathVariable @Param("cpf")  String cpf) {
         ClientDto clientDto = new ClientDto();
         clientDto.setCpf(cpf);
         try {
@@ -62,6 +62,8 @@ public class ClientController {
         }
 
     }
+
+
 
 
 }

@@ -30,6 +30,12 @@ public class AddressService {
 
         return address.stream().map(x -> new AddressDto(x)).collect(Collectors.toList());
     }
+    @Transactional(propagation = Propagation.REQUIRED, readOnly = false)
+    public List<AddressDto> findByClientCpf(String cpf) {
+        List<Address> address =  addressRepository.findByClientCpf(cpf);
+
+        return address.stream().map(x -> new AddressDto(x)).collect(Collectors.toList());
+    }
 
     @Transactional(propagation= Propagation.REQUIRED, readOnly=false)
     public CreateAddressDto save(CreateAddressDto createAddressDto) {
