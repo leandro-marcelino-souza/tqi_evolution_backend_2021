@@ -54,6 +54,7 @@ public class LoanController {
 
     }
 
+/*
 
     @DeleteMapping(value = "/{id}")
     public ResponseEntity delete(@PathVariable Long id) {
@@ -68,6 +69,7 @@ public class LoanController {
         }
 
     }
+*/
 
 
 }

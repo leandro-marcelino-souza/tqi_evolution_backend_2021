@@ -49,7 +49,7 @@ public class ClientController {
         }
     }
 
-    @DeleteMapping(value = "/{cpf}")
+    /*@DeleteMapping(value = "/{cpf}")
     public ResponseEntity<String> delete(@PathVariable @Param("cpf")  String cpf) {
         ClientDto clientDto = new ClientDto();
         clientDto.setCpf(cpf);
@@ -62,7 +62,7 @@ public class ClientController {
         }
 
     }
-
+*/
 
 
 

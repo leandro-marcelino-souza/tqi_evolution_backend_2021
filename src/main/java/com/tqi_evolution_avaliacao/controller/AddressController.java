@@ -49,7 +49,7 @@ public class AddressController {
         }
     }
 
-
+/*
     @DeleteMapping(value = "/{id}")
     public ResponseEntity delete(@PathVariable Long id) {
         Address address = new Address();
@@ -62,5 +62,5 @@ public class AddressController {
 
         }
 
-    }
+    }*/
 }
