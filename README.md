@@ -2,7 +2,7 @@
 
 
 
-## O projeto foi criado utilizando o framework do Spring boot
+## O projeto foi criado utilizando o framework do Spring boot, pois, ele é um ferramenta segura e robusta.
 
 Projeto Gradle, com java 8
 
